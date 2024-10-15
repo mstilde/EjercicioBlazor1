@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\matis\\source\\repos\\EjercicioBlazor\\EjercicioBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EjercicioBlazor.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EjercicioBlazor.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\matis\\source\\repos\\EjercicioBlazor\\EjercicioBlazor\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\matis\\source\\repos\\EjercicioBlazor\\EjercicioBlazor\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\matis\\source\\repos\\EjercicioBlazor\\EjercicioBlazor\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\matis\\source\\repos\\EjercicioBlazor\\EjercicioBlazor\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EjercicioBlazor.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EjercicioBlazor.props",
+      "PackagePath": "build\\EjercicioBlazor.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EjercicioBlazor.props",
+      "PackagePath": "buildMultiTargeting\\EjercicioBlazor.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EjercicioBlazor.props",
+      "PackagePath": "buildTransitive\\EjercicioBlazor.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
