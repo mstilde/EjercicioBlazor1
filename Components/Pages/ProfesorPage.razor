@@ -1,0 +1,173 @@
+﻿@page "/profesor"
+@using EjercicioBlazor.Entities;
+@rendermode InteractiveServer
+
+
+<h1>Profesor</h1>
+
+<h3>Nuevo Profesor</h3>
+
+<label>
+    DNI
+    <input type="number" @bind="DNI" />
+</label>
+<label>
+    Nombre
+    <input type="text" @bind="Nombre" />
+</label>
+<label>
+    Apellido
+    <input type="text" @bind="Apellido" />
+</label>
+<label>
+    Fecha nacimiento
+    <input type="date" @bind="FechaNacimiento" />
+</label>
+<label>
+    Años Experiencia
+    <input type="int" @bind="AñosExperiencia" />
+</label>
+
+@if (EstamosModificando)
+{
+    <button type="button" class="btn btn-primary" @onclick="GuardarCambios">Guardar Cambios</button>
+}
+else
+{
+    <button type="button" class="btn btn-primary" @onclick="Agregar">Agregar profesor</button>
+}
+<br />
+
+@if (MensajeError != "")
+{
+    <label style="background-color: red;">@MensajeError</label>
+}
+
+<table class="table table-striped table-hover">
+    <thread>
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha nacimiento</th>
+            <th>Años experiencia</th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var item in ProfesoresList)
+        {
+            <tr>
+                <td>@item.DNI</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.FechaNacimiento</td>
+                <td>@item.AñosExperiencia</td>
+                <td>
+                    <button type="button" class="btn btn-link" @onclick="() => Modificar(item)">MODIFICAR</button>
+                    <button type="button" class="btn btn-link" @onclick="() => Eliminar(item)">ELIMINAR</button>
+                </td>
+            </tr>
+        }
+@*
+        @for (int i = 0; i <= CantidadProfesores; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@ProfesoresList[i].DNI</td>
+                <td>@ProfesoresList[i].Nombre</td>
+                <td>@ProfesoresList[i].Apellido</td>
+                <td>@ProfesoresList[i].FechaNacimiento</td>
+                <td>@ProfesoresList[i].AñosExperiencia</td>
+                <td>
+                    <button type="button" class="btn btn-link" @onclick="Modificar(i)">MODIFICAR</button>
+                </td>
+            </tr>
+        }
+*@
+
+    </tbody>
+</table>
+
+<p>Cantidad de profesores: @CantidadProfesores</p>
+
+
+@code {
+    private int CantidadProfesores = 0;
+    private string MensajeError = "";
+    private bool EstamosModificando = false;
+    private Profesor? ProfesorModificando;
+
+
+    private long DNI = 0;
+    private string Nombre = "";
+    private string Apellido = "";
+    private DateOnly? FechaNacimiento;
+    private int AñosExperiencia = 0;
+
+    private List<Profesor> ProfesoresList = new();
+
+    private void Agregar()
+    {
+        if (DNI == 0 || Nombre == "" || Apellido == "" || FechaNacimiento == null)
+        {
+            MensajeError = "No se ingresaron todos los datos del profesor";
+        }
+        else
+        {
+            ProfesoresList.Add(new Profesor(DNI, Nombre, Apellido, (DateOnly)FechaNacimiento, AñosExperiencia));
+
+            DNI = 0;
+            Nombre = "";
+            Apellido = "";
+            FechaNacimiento = null;
+            AñosExperiencia = 0;
+
+            CantidadProfesores++;
+            MensajeError = "";
+        }
+
+    }
+
+    private void Modificar(Profesor profesorModificar)
+    {
+        EstamosModificando = true;
+        ProfesorModificando = profesorModificar;
+
+        DNI = profesorModificar.DNI;
+        Nombre = profesorModificar.Nombre;
+        Apellido = profesorModificar.Apellido;
+        FechaNacimiento = profesorModificar.FechaNacimiento;
+        AñosExperiencia = profesorModificar.AñosExperiencia;
+    }
+
+    private void GuardarCambios()
+    {
+        if (DNI == 0 || Nombre == "" || Apellido == "" || FechaNacimiento == null)
+        {
+            MensajeError = "No se ingresaron todos los datos del profesor";
+        } else
+        {
+            ProfesorModificando.DNI = DNI;
+            ProfesorModificando.Nombre = Nombre;
+            ProfesorModificando.Apellido = Apellido;
+            ProfesorModificando.FechaNacimiento = (DateOnly)FechaNacimiento;
+            ProfesorModificando.AñosExperiencia = AñosExperiencia;
+
+            DNI = 0;
+            Nombre = "";
+            Apellido = "";
+            FechaNacimiento = null;
+            AñosExperiencia = 0;
+
+            EstamosModificando = false;
+            ProfesorModificando = null;
+        }
+
+    }
+    private void Eliminar(Profesor profesorEliminar)
+    {
+        ProfesoresList.Remove(profesorEliminar);
+        CantidadProfesores--;
+    }
+}

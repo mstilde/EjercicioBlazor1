@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EjercicioBlazor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1af958ac7e5e920731cbb19d0209224327901f7d")]
 [assembly: System.Reflection.AssemblyProductAttribute("EjercicioBlazor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EjercicioBlazor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

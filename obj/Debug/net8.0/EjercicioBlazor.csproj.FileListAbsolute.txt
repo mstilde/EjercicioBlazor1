@@ -27,3 +27,4 @@ C:\Users\matis\source\repos\EjercicioBlazor\EjercicioBlazor\obj\Debug\net8.0\ref
 C:\Users\matis\source\repos\EjercicioBlazor\EjercicioBlazor\obj\Debug\net8.0\EjercicioBlazor.pdb
 C:\Users\matis\source\repos\EjercicioBlazor\EjercicioBlazor\obj\Debug\net8.0\EjercicioBlazor.genruntimeconfig.cache
 C:\Users\matis\source\repos\EjercicioBlazor\EjercicioBlazor\obj\Debug\net8.0\ref\EjercicioBlazor.dll
+C:\Users\matis\source\repos\EjercicioBlazor\EjercicioBlazor\obj\Debug\net8.0\EjercicioBlazor.sourcelink.json

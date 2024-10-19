@@ -1,0 +1,127 @@
+﻿@page "/peliculas"
+@using EjercicioBlazor.Entities;
+@rendermode InteractiveServer
+
+<PageTitle>Peliculas</PageTitle>
+
+<h1>Peliculas que ví</h1>
+
+<p>Agregar una pelicula</p>
+
+<div class="campos">
+    <label for="nombrePelicula">Pelicula:</label>
+    <div class="col-md-4">
+        <input id="nombrePelicula" type="text" class="form-control col-md-6" placeholder="Ingrese el nombre de la pelicula" />
+    </div>
+</div>
+
+<div class="campos">
+    <label for="clasificacion">Calificación:</label>
+    <div class="col-md-4">
+        <input id="clasificacion" type="number" class="form-control" min="1" max="5" placeholder="Ingrese una clasificación" />
+    </div>
+</div>
+
+@if (EstamosModificando)
+{
+    <button type="button" class="btn btn-primary" @onclick="GuardarCambios">Guardar cambios</button>
+} else
+{
+    <button type="button" class="btn btn-primary" @onclick="AgregarPelicula">Agregar pelicula</button>
+}
+
+@if (MensajeError != "")
+{
+    <label style="background-color: red;">@MensajeError</label>
+}
+
+
+<table class="table">
+    <thread>
+        <tr>
+            <td>Nombre de la pelicula</td>
+            <td>Calificacion</td>
+            <td></td>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var pelicula in PeliculasList)
+        {
+            <tr>
+                <td>@pelicula.Nombre</td>
+                <td>@pelicula.Calificacion</td>
+                <td>
+                    <button type="button" class="btn btn-link" @onlick="() => Modificar(pelicula)">MODIFICAR</button>
+                    <button type="button" class="btn btn-link" @onlick="() => Eliminar(pelicula)">ELIMINAR</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Cantidad Peliculas: @CantidadPeliculas</p>
+
+@code {
+    private int CantidadPeliculas = 0;
+    private string MensajeError = "";
+    private bool EstamosModificando = false;
+    private Pelicula? PeliculaModificando;
+
+    private string Nombre = "";
+    private int Calificacion = 0;
+
+    private List<Pelicula> PeliculasList = new();
+
+    private void AgregarPelicula()
+    {
+        if (Nombre == "" || Calificacion == 0)
+        {
+            MensajeError = "No se ingresaron todos los datos de la película";
+        } else
+        {
+            PeliculasList.Add(new Pelicula(Nombre, Calificacion));
+
+            Nombre = "";
+            Calificacion = 0;
+
+            CantidadPeliculas++;
+            MensajeError = "";
+        }
+    }
+
+    private void GuardarCambios()
+    {
+        if (Nombre == "" || Calificacion == 0)
+        {
+            MensajeError = "No se ingresaron todos los datos de la película";
+        }
+        else
+        {
+            PeliculasList.Add(new Pelicula(Nombre, Calificacion));
+
+            Nombre = "";
+            Calificacion = 0;
+
+            CantidadPeliculas++;
+            MensajeError = "";
+
+            EstamosModificando = false;
+            PeliculaModificando = null;
+        }
+    }
+
+    private void Modificar(Pelicula peliculaModificar)
+    {
+        EstamosModificando = true;
+        PeliculaModificando = peliculaModificar;
+
+        Nombre = peliculaModificar.Nombre;
+        Calificacion = peliculaModificar.Calificacion;
+    }
+
+    private void Eliminar(Pelicula peliculaEliminar)
+    {
+        PeliculasList.Remove(peliculaEliminar);
+        CantidadPeliculas--;
+    }
+}
